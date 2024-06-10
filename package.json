@@ -9,6 +9,7 @@
   "dependencies": {
     "@openzeppelin/contracts": "^5.0.2",
     "@openzeppelin/contracts-upgradeable": "^5.0.2",
+    "@uniswap/v2-periphery": "^1.1.0-beta.0",
     "forge-std": "github:foundry-rs/forge-std#v1.8.1"
   }
 }
