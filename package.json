@@ -4,5 +4,11 @@
   "description": "Greencoin core contracts",
   "main": "index.js",
   "author": "Mihirsinh Parmar <mihirsinh.parmar.it@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "packageManager": "yarn@4.2.2",
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.2",
+    "@openzeppelin/contracts-upgradeable": "^5.0.2",
+    "forge-std": "github:foundry-rs/forge-std#v1.8.1"
+  }
 }

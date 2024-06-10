@@ -12,3 +12,8 @@ docs/
 
 # Dotenv file
 .env
+
+# Yarn and Node
+.yarn
+node_modules
+lib
