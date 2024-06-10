@@ -1,0 +1,8 @@
+{
+  "name": "greencoin-contracts",
+  "version": "0.1.0",
+  "description": "Greencoin core contracts",
+  "main": "index.js",
+  "author": "Mihirsinh Parmar <mihirsinh.parmar.it@gmail.com>",
+  "license": "MIT"
+}

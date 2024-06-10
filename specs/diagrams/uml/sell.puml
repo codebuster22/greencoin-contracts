@@ -1,0 +1,33 @@
+@startuml
+title Sell token
+skinparam maxMessageSize 150
+actor "seller" as seller
+participant "dApp" as dapp
+participant "IPFS" as ipfs
+participant "ERC20" as token
+participant "Bonding Curve" as curve
+participant "Logs" as logs
+
+seller -> dapp : browse portfolio
+activate dapp
+dapp -> logs : fetch bought tokens
+logs -> dapp : send list of tokens bought by seller
+dapp -> ipfs : fetch tokens metadata
+ipfs -> dapp : return tokens metadata
+seller -> dapp : select token
+dapp -> seller : show token graph and recent trades
+seller -> dapp :  sell token for ETH
+dapp -> curve : sell tokens with minReceiveETH and subscribe to logs
+activate curve
+curve -> curve : calculate price
+curve -> curve : update params
+activate token
+curve -> token : transfer tokens from seller
+token -> logs : emit transfer event
+deactivate token
+curve -> seller : transfer ETH to seller
+curve -> logs : emit buy event
+deactivate curve
+logs -> dapp : inform new buy event
+dapp -> seller : show success
+@enduml

@@ -1,0 +1,42 @@
+@startuml
+title Launch new token
+skinparam maxMessageSize 150
+actor "Creator" as creator
+participant "dApp" as dapp
+participant "IPFS" as ipfs
+participant "Launchpad" as launch
+participant "ERC20" as token
+participant "Bonding Curve" as curve
+participant "Logs" as logs
+
+
+creator -> dapp : connect wallet
+activate dapp
+dapp -> creator : acknowledge wallet connected
+creator -> dapp : launch new token and fill out details
+dapp -> ipfs : store the token details and pin the location
+activate ipfs
+ipfs -> dapp : send CID
+deactivate ipfs
+dapp -> launch : deploy new token token launch and subscribe to logs
+activate launch
+create token
+launch -> token : deploy token
+activate token
+token -> launch : receive new token address
+launch -> token : initialize bonding curve
+create curve
+token -> curve : deploy new bonding curve
+activate curve
+curve -> token : recieve new curve address
+token -> curve : mint total supply to the bonding curve
+deactivate curve
+token -> launch : return bonding curve
+deactivate token
+launch -> logs : emit logs
+deactivate launch
+logs -> dapp : inform new token launched
+dapp -> creator : show success
+deactivate dapp
+
+@enduml
