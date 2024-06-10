@@ -22,10 +22,6 @@ contract GreenCurve {
         token = IERC20(_tokenAddress);
         maxSupply = _maxSupply;
         marketCapThreshold = _marketCapThreshold; // example threshold 100k threshold
-    }
-
-    function startBonding() external {
-        require(!bondingActive, "Bonding already active");
         greenErc20Balance = token.balanceOf(address(this));
         ethBalance = address(this).balance;
         bondingActive = true;

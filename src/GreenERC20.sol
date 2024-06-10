@@ -10,8 +10,6 @@ contract GreenERC20 is ERC20Upgradeable {
     string public metadataURI;
     address payable public bondingCurve;
 
-    bool public initialized = false;
-
     constructor() {
         _disableInitializers();
     }
@@ -22,10 +20,8 @@ contract GreenERC20 is ERC20Upgradeable {
         metadataURI = _metadataURI;
 
         bondingCurve = payable(Clones.clone(_bondingCurveImplementation));
-        GreenCurve(bondingCurve).initialize(address(this), _maxSupply, _marketCapThreshold, _uniswapRouter);
-        _approve(address(this), bondingCurve, _maxSupply);
         _mint(bondingCurve, _maxSupply);
-        GreenCurve(bondingCurve).startBonding();
+        GreenCurve(bondingCurve).initialize(address(this), _maxSupply, _marketCapThreshold, _uniswapRouter);
         return bondingCurve;
     }
 }
