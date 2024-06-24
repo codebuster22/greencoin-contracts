@@ -1,4 +1,4 @@
-pragma solidity ^0.8.20;
+pragma solidity 0.8.24;
 
 import {GreenERC20Base} from "../base/GreenERC20.base.sol";
 import {GreenLaunchpad} from "../../src/GreenLaunchpad.sol";

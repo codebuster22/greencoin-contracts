@@ -1,4 +1,4 @@
-pragma solidity ^0.8.20;
+pragma solidity 0.8.24;
 
 import {GreenCurve} from "../../src/GreenCurve.sol";
 import {ERC20Mock} from "../mocks/ERC20Mock.sol";
