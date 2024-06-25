@@ -4,6 +4,7 @@ import {GreenLaunchpadBase} from "../base/GreenLaunchpad.base.sol";
 import {GreenLaunchpad} from "../../src/GreenLaunchpad.sol";
 import {GreenERC20} from "../../src/GreenERC20.sol";
 import {GreenCurve} from "../../src/GreenCurve.sol";
+import {console} from "forge-std/console.sol";
 
 contract GreenLaunchpadUnit is GreenLaunchpadBase {
     function test_DeployWithInvalidToken() public {
@@ -87,7 +88,9 @@ contract GreenLaunchpadUnit is GreenLaunchpadBase {
     }
 
     function test_deployTokens() public {
+        uint256 gasLeftTilleNow = gasleft();
         (address tokenContract, address curveContract) = launchpad.deployToken("TEST", "TEST", "ipfs://", 100);
+        console.log(gasLeftTilleNow - gasleft());
         assertEq(GreenERC20(tokenContract).totalSupply(), 100);
         assertEq(GreenCurve(payable(curveContract)).saleActive(), true);
         assertEq(GreenERC20(tokenContract).balanceOf(curveContract), 90);
