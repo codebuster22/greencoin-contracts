@@ -10,7 +10,7 @@ contract GreenCurve {
     event TokenBuy(uint256 ethIn, uint256 tokenOut, uint256 fee, address buyer);
     event TokenSell(uint256 tokenIn, uint256 ethOut, uint256 fee, address seller);
     // note: update the pool address at the time of deployment
-    IUniswapV2Pair public constant WETH_USDC_PAIR = IUniswapV2Pair(0x61c31F973fb0255ebb717396F624766d36c64784);
+    IUniswapV2Pair public constant WETH_USDC_PAIR = IUniswapV2Pair(0xa28641C7FEE10088eCD4B91b923fc81448392E36);
     uint256 public constant V_ETH_BALANCE = 1.5 ether;
     IERC20 public token;
     uint256 public maxSupply;

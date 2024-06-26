@@ -24,7 +24,7 @@ contract GreenCurveBase is Test {
     address public owner = makeAddr("owner");
     address public community = makeAddr("community");
     address public protocol = makeAddr("protocol");
-    address public router = 0x4752ba5DBc23f44D87826276BF6Fd6b1C372aD24;
+    address public router = 0x86dcd3293C53Cf8EFd7303B57beb2a3F671dDE98;
     address public feeReceiver = makeAddr("feeReceiver");
 
     function setUp() public {
